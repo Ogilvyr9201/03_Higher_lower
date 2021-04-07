@@ -4,8 +4,8 @@
 def num_checker(question, low_num, high_num):
     while True:
 
-        error = "<error> Please type an interger between {} or {}".format(low_num,
-                                                                             high_num)
+        error = "<error> Please type an interger between {} or {}" \
+         .format(low_num, high_num)
 
         try:
             response = int(input(question))
@@ -23,9 +23,13 @@ def num_checker(question, low_num, high_num):
 
 # Main routine
 # looped for testing
+
+
 loop = ""
 while loop == "":
-    mode_choice = num_checker("Would you like to play Mode #1 or Mode #2: ", 1, 2)
+    mode_choice = num_checker("Would you like to play Mode\
+ #1 or Mode #2: ", 1, 2)
+
     if mode_choice == 1:
         print("Mode #1: 1-100: ")
         print()

@@ -1,6 +1,5 @@
-# number checker goes here...
-def num_check(question, low=None, high=None):
-    error = "please enter a valid response"
+# Ultimate number checker works for 4 situations!!!!!
+def num_check(question, error, low=None, high=None):
 
     valid = False
     while not valid:
@@ -12,6 +11,7 @@ def num_check(question, low=None, high=None):
                     return response
                 else:
                     print(error)
+                    print()
                     continue
 
             elif low is not None:
@@ -19,6 +19,7 @@ def num_check(question, low=None, high=None):
                     return response
                 else:
                     print(error)
+                    print()
                     continue
 
             else:
@@ -26,14 +27,12 @@ def num_check(question, low=None, high=None):
 
         except ValueError:
             print(error)
+            print()
 
 
-# main routine
-num_rounds = num_check("Rounds? ", 0)
-guess = num_check("Guess: ", 0, 10)
+low_boundary = num_check("What is the low boundary? ", "<error> \
+please Eneter a number above 0", 0, None)
 
-fav_num = num_check("Favourite? ")
-
-print("Rounds chosen: ", num_rounds)
-print("Guess: ", guess)
-print("Favourite: ", fav_num)
+print()
+high_boundary = num_check("What is the high boundary? ", "<error> please \
+Eneter a number above {}".format(low_boundary), low_boundary, None)

@@ -21,6 +21,8 @@ def check_mode(question):
 
 # Main routine
 # looped for testing
+
+
 loop = ""
 while loop == "":
     mode_choice = check_mode("Would you like to play Mode #1 or Mode #2: ")

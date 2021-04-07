@@ -10,7 +10,7 @@ def check_rounds():
             try:
                 response = int(response)
 
-                if response < 1 :
+                if response < 1:
                     print(round_error)
                     print()
                     continue
@@ -23,6 +23,7 @@ def check_rounds():
         return response
 
 # Main routine
+
 
 rounds_played = 0
 choose_instruction = "Choose a number between 1 and 100"
@@ -38,7 +39,7 @@ while end_game == "no":
     print()
     if rounds == "":
         heading = "Continuous Mode Round:" \
-                  "Round {}".format(rounds_played + 1)
+                  " Round {}".format(rounds_played + 1)
 
     else:
         heading = "Round {} of {}".format(rounds_played + 1, rounds)
