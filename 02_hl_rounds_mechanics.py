@@ -39,7 +39,7 @@ while end_game == "no":
     print()
     if rounds == "":
         heading = "Continuous Mode Round:" \
-                  " Round {}".format(rounds_played + 1)
+                  "Round {}".format(rounds_played + 1)
 
     else:
         heading = "Round {} of {}".format(rounds_played + 1, rounds)

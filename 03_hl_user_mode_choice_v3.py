@@ -27,8 +27,8 @@ def num_checker(question, low_num, high_num):
 
 loop = ""
 while loop == "":
-    mode_choice = num_checker("Would you like to play Mode\
- #1 or Mode #2: ", 1, 2)
+    mode_choice = num_checker("Would you like to play Mode #1 or Mode #2: \
+    ", 1, 2)
 
     if mode_choice == 1:
         print("Mode #1: 1-100: ")
