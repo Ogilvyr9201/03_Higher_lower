@@ -1,5 +1,6 @@
-# import random
+# import
 import random
+import math
 
 
 # Functions go here
@@ -110,8 +111,7 @@ if played_before == "no":
 
 print()
 # Ask user what mode they want to play
-mode_choice = num_check("Would you like to play Mode #1 or Mode #2: \
-", "<error> please choose 1 or 2", 1, 2)
+mode_choice = num_check("Would you like to play Mode #1 or Mode #2: ", "<error> please choose 1 or 2", 1, 2)
 
 # Mode heading and high and low num difining
 if mode_choice == 1:
@@ -123,8 +123,7 @@ if mode_choice == 1:
 elif mode_choice == 2:
     mode_heading = "Mode #2: User choice"
     print(mode_heading)
-    low_boundary = num_check("What is the low boundary? ", "<error> \
-    please Eneter a number above 0", 0, None)
+    low_boundary = num_check("What is the low boundary? ", "<error> please Eneter a number above 0", 0, None)
 
     print()
     high_boundary = num_check("What is the high boundary? ", "<error> please enter a number above {}".format(low_boundary), low_boundary, None)
@@ -148,4 +147,19 @@ while end_game == "":
     # Generate computer choice
     comp_choice = random.randint(low_boundary, high_boundary)
     print(comp_choice)
-    break
+    print()
+
+    # Calculate number of guesses
+    range = high_boundary - low_boundary + 1
+    max_raw = math.log2(range)
+    max_upped = math.ceil(max_raw)
+    max_guesses = max_upped + 1
+    print("Max Guesses: {}".format(max_guesses))
+    print()
+
+    end_game = yes_no("Do you want to reapeat? ")
+    if end_game == "yes":
+        end_game = ""
+        continue
+    else:
+        break
