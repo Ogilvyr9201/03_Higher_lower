@@ -62,7 +62,7 @@ for item in range(0, 4):
     elif mode_choice == 2:
         mode_heading = "Mode #2: User choice"
         print(mode_heading)
-        low_boundary = num_check("What is the low boundary? ", "<error> please Eneter a number above 0", 0, None)
+        low_boundary = num_check("What is the low boundary? ", "<error> please eneter a number above 0", 0, None)
         print()
         high_boundary = num_check("What is the high boundary? ", "<error> please enter a number above {}".format(low_boundary), low_boundary, None)
     print()
