@@ -6,14 +6,14 @@ import math
 # Functions go here
 # Ultimate number checker works for 4 situations!!!!!
 # checks for intgers.  Optinally checks an integer is above a minimum / below a maximum
-def num_check(question, error, low=None, high=None):
+def num_check(question, error, low=None, high=None, exit_code=None):
 
     valid = False
     while not valid:
         try:
             response = input(question).lower()
 
-            if response == "xxx":
+            if response == exit_code:
                 return response
             else:
                 response = int(response)
@@ -51,30 +51,6 @@ def num_check(question, error, low=None, high=None):
             print(error)
             print()
 
-
-# A number checker that allows enter as a response Imported From RPS
-def check_rounds():
-    while True:
-        response = input("How many rounds: ")
-
-        round_error = "Please type either <enter> " \
-                      "or an integer that is more the 0"
-
-        if response != "":
-            try:
-                response = int(response)
-
-                if response < 1:
-                    print(round_error)
-                    print()
-                    continue
-
-            except ValueError:
-                print(round_error)
-                print()
-                continue
-
-        return response
 
 
 # Checks for yes or no responses Imported From LU
@@ -148,7 +124,9 @@ while game_repeat == "":
     game_summary = []
 
     # Ask user how many rounds the want to play and sets rounds played to 0 
-    rounds = check_rounds()
+    round_error = "Please type either <enter> or an integer that is more the 0"
+
+    rounds = num_check("How many rounds: ", round_error, exit_code="")
     rounds_played = 0
 
     end_game = "no"
@@ -173,9 +151,9 @@ while game_repeat == "":
         print(comp_choice)
         print()
 
-        # Calculate number of guesses
-        range = high_boundary - low_boundary + 1
-        max_raw = math.log2(range)
+        # Calculate number of guesses depnding on the range of numbers
+        num_range = high_boundary - low_boundary + 1
+        max_raw = math.log2(num_range)
         max_upped = math.ceil(max_raw)
         max_guesses = max_upped + 1
         print("Max Guesses: {}".format(max_guesses))
@@ -195,8 +173,15 @@ while game_repeat == "":
             guess_instruction = "Guess a number between {} and {}: ".format(low_boundary, high_boundary)
             guess_error = "<error> please choose an interger between {} and {}".format(low_boundary, high_boundary)
 
-            guess = num_check(guess_instruction, guess_error, low_boundary, high_boundary)
+            guess = num_check(guess_instruction, guess_error, low_boundary, high_boundary, "xxx")
             print()
+
+            # Exits game if exit code typed
+            if guess == "xxx":
+                end_game = "yes"
+                result = "quit"
+                rounds_played -= 1
+                break
 
             # if user guess is the same as what they have guessed before
             if guess in already_guessed:
