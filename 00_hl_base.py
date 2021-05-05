@@ -52,7 +52,6 @@ def num_check(question, error, low=None, high=None, exit_code=None):
             print()
 
 
-
 # Checks for yes or no responses Imported From LU
 def yes_no(question):
     valid = False
@@ -66,6 +65,10 @@ def yes_no(question):
         elif response == "no" or response == "n":
             response = "no"
             return response
+        
+        elif response == "egg":
+            response = "egg"
+            return response
 
         else:
             print("<error> Please say yes or no")
@@ -74,15 +77,79 @@ def yes_no(question):
 
 # Prints instructions if necessary, returns <blank> 
 def instructions():
-    print("**** How to Play ****")
+    statement_generator("Inst")
     print()
     print("The rules go here")
     print()
     return""
 
 
+# Gives statements decoration on sides and top
+def statement_generator(statement, side_decoration, top_bottom_decoration):
+
+    sides = side_decoration * 3
+
+    statement = "{} {} {}".format(sides, statement, sides)
+
+    top_bottom = top_bottom_decoration * len(statement)
+
+
+    print(top_bottom)
+    print(statement)
+    print(top_bottom)
+
+    return ""
+    
+    top_right_decoration = " " * len(satement) + top_right
+
+    print(top_right)
+    print(statement_generator)
+    print()
+
+
+# Easter Egg
+def easter_egg():
+    pico_again = "yes"
+    valid = False
+    while not valid:
+        print()
+        print()
+        print("           *")
+        pico = input("    Pico-8    ")
+        print()
+        print()
+        pico_choice = random.randint(1, 10)
+
+        while pico_again == "yes":
+
+            pico_guess = num_check("choose a number between 1 and 10 ", "oops")
+
+            if pico_guess > pico_choice:
+                print()
+                print("wrong")
+                continue
+            elif pico_guess < pico_choice:
+                print()
+                print("wrong")
+                continue
+            elif pico_guess == pico_choice:
+                print()
+                print("congratulations")
+                break
+        pico_again = yes_no("do you want to play again? ")
+                
+        if pico_again == "no":
+            pico_again = "no"
+            break
+        elif pico_again == "yes":
+            pico_again = "yes"
+            continue
+
 # Main Routine
 choose_instruction = "Choose a number between 1 and 100"
+
+# Welcome
+statement_generator("Welcome to the Higher Lower Game", "!", "=")
 
 
 # Ask user if they have played before
@@ -91,6 +158,9 @@ played_before = yes_no("Have you played this game before? ")
 if played_before == "no":
     instructions()
 
+elif played_before == "egg":
+    easter_egg()
+
 print()
 # Ask user what mode they want to play
 mode_choice = num_check("Would you like to play Mode #1 or Mode #2: ", "<error> please choose 1 or 2", 1, 2)
@@ -98,18 +168,18 @@ mode_choice = num_check("Would you like to play Mode #1 or Mode #2: ", "<error> 
 # Mode heading and high and low num difining
 if mode_choice == 1:
     mode_heading = "Mode #1: 1-100: "
+    # Sets high amd low boundarys automaticaly
     low_boundary = 1
     high_boundary = 100
 
 elif mode_choice == 2:
     mode_heading = "Mode #2: User choice"
+    # Asks user for low and high boundarys
     low_boundary = num_check("What is the low boundary? ", "<error> please enter a number above 0", 0, None)
-
-    print()
     high_boundary = num_check("What is the high boundary? ", "<error> please enter a number above {}".format(low_boundary), low_boundary, None)
 
 print()
-print(mode_heading)
+statement_generator(mode_heading, "-", "*")
 print()
 
 game_repeat = ""
@@ -143,20 +213,18 @@ while game_repeat == "":
                 end_game = "yes"
 
         print()
-        print(round_heading)
+        statement_generator(round_heading, "?", "~")
         print()
 
         # Generate computer choice
         comp_choice = random.randint(low_boundary, high_boundary)
-        print(comp_choice)
-        print()
 
         # Calculate number of guesses depnding on the range of numbers
         num_range = high_boundary - low_boundary + 1
         max_raw = math.log2(num_range)
         max_upped = math.ceil(max_raw)
         max_guesses = max_upped + 1
-        print("Max Guesses: {}".format(max_guesses))
+        statement_generator("Max Guesses: {}".format(max_guesses), "|", "-")
         print()
 
         # defines guess and number of guesses so loop can continue
@@ -196,10 +264,10 @@ while game_repeat == "":
             # Compare guess with computer choice
             if guess != comp_choice:
                 if guess < comp_choice:
-                    print("To Low try again ")
+                    statement_generator("To Low try again", "<", "=")
                     print()
                 elif guess > comp_choice:
-                    print("To High try again ")
+                    statement_generator("To High try again", ">", "=")
                     print()
                 
                 # Adds users guesses
