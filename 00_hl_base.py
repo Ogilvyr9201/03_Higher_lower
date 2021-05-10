@@ -65,7 +65,7 @@ def yes_no(question):
         elif response == "no" or response == "n":
             response = "no"
             return response
-        
+
         elif response == "egg":
             response = "egg"
             return response
@@ -75,7 +75,7 @@ def yes_no(question):
             print()
 
 
-# Prints instructions if necessary, returns <blank> 
+# Prints instructions if necessary, returns <blank>
 def instructions():
     statement_generator("Instuctions", "*", "-")
     print()
@@ -106,13 +106,12 @@ def statement_generator(statement, side_decoration, top_bottom_decoration):
 
     top_bottom = top_bottom_decoration * len(statement)
 
-
     print(top_bottom)
     print(statement)
     print(top_bottom)
 
     return ""
-    
+
     top_right_decoration = " " * len(satement) + top_right
 
     print(top_right)
@@ -150,7 +149,7 @@ def easter_egg():
                 print("congratulations")
                 break
         pico_again = yes_no("do you want to play again? ")
-                
+
         if pico_again == "no":
             pico_again = "no"
             break
@@ -159,6 +158,8 @@ def easter_egg():
             continue
 
 # Main Routine
+
+
 choose_instruction = "Choose a number between 1 and 100"
 
 # Welcome
@@ -177,8 +178,6 @@ print()
 
 game_repeat = ""
 while game_repeat == "":
-
-    print()
     # Ask user what mode they want to play
     mode_choice = num_check("Would you like to play Mode #1 or Mode #2: ", "<error> please choose 1 or 2", 1, 2)
 
@@ -207,7 +206,7 @@ while game_repeat == "":
     # Games result list (filled when you win or lose)
     game_summary = []
 
-    # Ask user how many rounds the want to play and sets rounds played to 0 
+    # Ask user how many rounds the want to play and sets rounds played to 0
     round_error = "Please type either <enter> or an integer that is more the 0"
 
     rounds = num_check("How many rounds: ", round_error, exit_code="")
@@ -282,7 +281,7 @@ while game_repeat == "":
                 elif guess > comp_choice:
                     statement_generator("To High try again", ">", "=")
                     print()
-                
+
                 # Adds users guesses
                 num_guess += 1
             elif guess == comp_choice:
@@ -293,7 +292,7 @@ while game_repeat == "":
                 # Adds users guesses
                 num_guess += 1
                 # Defines Result
-                result = "won" 
+                result = "won"
                 break
 
             # checks how many guesses are left
@@ -308,11 +307,11 @@ while game_repeat == "":
                 print()
                 # Defines Result
                 result = "lost"
-                # Outputs the number 
+                # Outputs the number
                 print("The Number was {}!".format(comp_choice))
                 print()
                 break
-        
+
         # Adds Game result to a list for history
         game_summary.append("Round #{}: {}".format(rounds_played + 1, result))
 
@@ -337,7 +336,7 @@ while game_repeat == "":
         statement_generator("Game History", "*", "=")
         for game in game_summary:
             print(game)
-    
+
     # final message output
     print()
     statement_generator("Thanks for Playing", "!", "=")
