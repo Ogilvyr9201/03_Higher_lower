@@ -3,6 +3,3 @@ print(
     "writing long para graphs which will\n"
     "wake instructions look way more neat"
 )
-print(
-
-)
