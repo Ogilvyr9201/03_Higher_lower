@@ -119,7 +119,8 @@ def statement_generator(statement, side_decoration, top_bottom_decoration):
     print()
 
 
-# Easter Egg
+# Easter Egg - Credit Toby Ayers 
+# couldnt have done it without him
 def easter_egg():
     pico_again = "yes"
     valid = False
