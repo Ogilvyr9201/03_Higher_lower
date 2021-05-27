@@ -210,7 +210,7 @@ while game_repeat == "":
     # Ask user how many rounds the want to play and sets rounds played to 0
     round_error = "Please type either <enter> or an integer that is more the 0"
 
-    rounds = num_check("How many rounds: ", round_error, exit_code="")
+    rounds = num_check("How many rounds: ", round_error, 1, exit_code="")
     rounds_played = 0
 
     end_game = "no"
